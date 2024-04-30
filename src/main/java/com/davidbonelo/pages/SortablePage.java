@@ -4,7 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class SortablePage extends CommonFunctions {
@@ -22,7 +25,10 @@ public class SortablePage extends CommonFunctions {
     }
 
     public String getItemNameAtPosition(int positionIdx) {
-        return getElementAtPosition(positionIdx).getText();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        WebElement item = getElementAtPosition(positionIdx);
+        wait.until(ExpectedConditions.elementToBeClickable(item));
+        return item.getText();
     }
 
     private WebElement getElementAtPosition(int positionIdx) {

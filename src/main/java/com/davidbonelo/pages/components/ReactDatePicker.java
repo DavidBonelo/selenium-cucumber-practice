@@ -1,4 +1,4 @@
-package com.davidbonelo.pages;
+package com.davidbonelo.pages.components;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
