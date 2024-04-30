@@ -87,4 +87,28 @@ public class StudentRegistrationSteps extends WebSetup {
             quitDriver();
         }
     }
+
+    @When("he enters {string} info")
+    public void heEntersDateInfo(String date) {
+        try {
+            LocalDate dateF = LocalDate.parse(date);
+            registerPage.fillDate(dateF);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            quitDriver();
+            Assertions.fail();
+        }
+    }
+
+    @Then("he should see the field as valid")
+    public void heShouldSeeTheFieldAsValid() {
+        try {
+            Assertions.assertTrue(registerPage.isDateInputValid());
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            Assertions.fail();
+        } finally {
+            quitDriver();
+        }
+    }
 }

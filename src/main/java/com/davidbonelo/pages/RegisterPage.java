@@ -36,7 +36,7 @@ public class RegisterPage extends CommonFunctions {
         typeInto(emailInputLocator, student.getEmail());
         selectGender(student.getGender());
         typeInto(phoneInputLocator, student.getPhone());
-        enterDate(student.getBirthDate());
+        fillDate(student.getBirthDate());
         selectSubjects(student.getSubjects());
         scrollTo(addressInputLocator);
         selectHobbies(student.getHobbies());
@@ -59,12 +59,18 @@ public class RegisterPage extends CommonFunctions {
         clickElement(By.cssSelector(genderLocator));
     }
 
-    private void enterDate(LocalDate birthDate) {
+    public void fillDate(LocalDate birthDate) {
         scrollTo(birthDateLocator);
         clickElement(birthDateLocator);
         WebElement datePicker = driver.findElement(By.cssSelector(".react-datepicker-popper"));
         ReactDatePicker reactDatePicker = new ReactDatePicker(datePicker);
         reactDatePicker.setDate(birthDate);
+    }
+
+    public boolean isDateInputValid() {
+        By validInputLocator = By.cssSelector("#dateOfBirthInput:valid");
+        boolean exists = driver.findElement(validInputLocator).getTagName().isEmpty();
+        return !exists;
     }
 
     private void selectSubjects(List<String> subjects) {
