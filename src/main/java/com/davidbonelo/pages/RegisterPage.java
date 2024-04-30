@@ -7,7 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -74,12 +77,15 @@ public class RegisterPage extends CommonFunctions {
     }
 
     private void selectSubjects(List<String> subjects) {
+        WebElement subjectInput = driver.findElement(subjectInputLocator);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         for (String subject : subjects) {
-//        typeIntoAndPressEnter(subjectInputLocator, student.getSubjects());
             scrollTo(subjectInputLocator);
-            clickElement(subjectInputLocator);
-            typeInto(subjectInputLocator, subject);
-            driver.findElement(subjectInputLocator).sendKeys(Keys.ENTER);
+            wait.until(ExpectedConditions.elementToBeClickable(subjectInput));
+            subjectInput.click();
+            subjectInput.sendKeys(subject);
+            wait.until(ExpectedConditions.elementToBeClickable(subjectInput));
+            subjectInput.sendKeys(Keys.ENTER);
         }
     }
 

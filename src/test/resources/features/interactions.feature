@@ -1,11 +1,13 @@
+@Interactions
 Feature: Mouse Interactions
 
-  @Interactions
+  @DragNDrop
   Scenario: Drag and drop
     Given User is in the droppable page
     When he drags and drops the box to its place
     Then he should see the droppable place reaction
 
+  @Sorting
   Scenario Outline: Sort list items
     Given User is in the sortable page
     When he moves <target> to <index> position

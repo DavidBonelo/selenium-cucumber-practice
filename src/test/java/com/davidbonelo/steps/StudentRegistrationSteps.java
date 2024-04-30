@@ -28,7 +28,6 @@ public class StudentRegistrationSteps extends WebSetup {
             student = Student.createFakeStudent();
             FormsPage formsPage = new HomePage(driver).navigateToFormsPage();
             registerPage = formsPage.navigateToPracticeForm();
-//            driver.get("https://demoqa.com/automation-practice-form");
 //            registerPage = new RegisterPage(driver);
         } catch (Exception e) {
             System.err.println(e.getMessage());

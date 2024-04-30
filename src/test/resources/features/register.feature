@@ -1,4 +1,4 @@
-@Registration
+@Form
 Feature: Student Registration
   yo como usario de la aplicación demoqa
   quiero llenar el formulario de incripcion
@@ -7,6 +7,7 @@ Feature: Student Registration
   Background: registration page
     Given the user is in the registration page
 
+  @Registration
   Scenario: successful register
     When he enters his information
     And he submits the data
