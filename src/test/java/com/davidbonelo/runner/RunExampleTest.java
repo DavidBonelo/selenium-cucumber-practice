@@ -15,6 +15,8 @@ import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 // package with step definitions
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.davidbonelo.steps")
-@IncludeTags("Registration")
+//@IncludeTags("Registration")
+//@IncludeTags("date")
+//@IncludeTags("Interactions")
 public class RunExampleTest {
 }
