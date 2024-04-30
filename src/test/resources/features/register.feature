@@ -4,7 +4,7 @@ Feature: Student Registration
   quiero llenar el formulario de incripcion
   para obtener los beneficios de la pagina
 
-  Scenario: inscripción correcta
+  Scenario: successful register
     Given the user is in the registration page
     When he enters his information
     And he submits the data
