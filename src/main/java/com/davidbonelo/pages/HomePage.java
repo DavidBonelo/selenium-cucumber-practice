@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class HomePage extends CommonFunctions {
     By formsCardLocator = By.xpath("//h5[text()='Forms']");
     By interactionsCardLocator = By.xpath("//h5[text()='Interactions']");
+    By widgetsCardLocator = By.xpath("//h5[text()='Widgets']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -19,5 +20,10 @@ public class HomePage extends CommonFunctions {
     public InteractionsPage navigateToInteractionsPage(){
         clickElement(interactionsCardLocator);
         return new InteractionsPage(driver);
+    }
+
+    public WidgetsPage navigateToWidgetsPage() {
+        clickElement(widgetsCardLocator);
+        return new WidgetsPage(driver);
     }
 }
