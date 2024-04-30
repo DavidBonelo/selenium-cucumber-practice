@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.time.LocalDate;
-import java.time.Month;
 
 public class ReactDatePicker {
     private final By yearSelectLocator = By.cssSelector(".react-datepicker__year-select");
@@ -17,7 +16,7 @@ public class ReactDatePicker {
 
     public void setDate(LocalDate date) {
         selectYear(date.getYear());
-        selectMonth(date.getMonth());
+        selectMonth(date.getMonth().getValue() - 1);
         selectDay(date.getDayOfMonth());
     }
 
@@ -28,17 +27,21 @@ public class ReactDatePicker {
         yearSelector.findElement(yearOptionSelector).click();
     }
 
-    private void selectMonth(Month month) {
+    private void selectMonth(int month) {
         WebElement monthSelector = root.findElement(monthSelectLocator);
         monthSelector.click();
-        By monthOptionSelector = By.cssSelector("option[value='" + (month.getValue() - 1) + "']");
+        By monthOptionSelector = By.cssSelector("option[value='" + month + "']");
         monthSelector.findElement(monthOptionSelector).click();
     }
 
     private void selectDay(int dayOfMonth) {
         By monthDaysLocator = By.cssSelector(".react-datepicker__month");
         WebElement monthDays = root.findElement(monthDaysLocator);
-        By dayLocator = By.xpath("//div[text()='" + dayOfMonth + "']");
+        String dayLocatorString = "//div[text()='" + dayOfMonth + "']";
+        String omitOutsideMonthClass =
+                "[not(contains(concat(' ',normalize-space(@class),' '),' " + "react" +
+                        "-datepicker__day--outside-month '))]";
+        By dayLocator = By.xpath(dayLocatorString + omitOutsideMonthClass);
         monthDays.findElement(dayLocator).click();
     }
 }
