@@ -14,7 +14,8 @@ public class WebSetup {
     protected WebDriver driver;
 
     protected void setupDriver() {
-        driver = getBrowserDriver(BrowserType.FIREFOX);
+        driver = getBrowserDriver(BrowserType.CHROME);
+        maximize();
         driver.get(BASE_URL);
         maximize();
     }
