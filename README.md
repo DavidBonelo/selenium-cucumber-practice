@@ -11,3 +11,5 @@ Web automation testing practice with selenium in BDD style running with cucumber
 ## How to generate reports
 
 - Run from the console with the command `./gradlew test --rerun-tasks --info`
+
+- probandooooo
